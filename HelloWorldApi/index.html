@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+
+    <h1 id="textId"></h1>
+    <button id="buttonId" onclick="getMessageFromTheServer()">Get the message from the server</button>
+
+    <script type="text/javascript">
+        function getMessageFromTheServer() {
+            //Call the method from the server
+            $.ajax({
+                'url': 'api/Greeting/getGreeting',
+                'method': 'GET',
+                'dataType': 'json',
+                'success':showMessageInHtmlPage         //another javascript function
+            });
+        }
+
+        function showMessageInHtmlPage(message) {
+            $("#textId").append(message);
+        }
+    </script>
+</body>
+</html>
